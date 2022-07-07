@@ -1,14 +1,9 @@
 <script setup>
 import { RouterView } from "vue-router";
+import AppHeader from "@/components/AppHeader.vue";
 </script>
 
 <template>
-  <header>
-    <router-link :to="{name: 'user'}"><h1>leaf</h1></router-link>
-    <div>
-      <button>menu</button>
-    </div>
-  </header>
-
+  <AppHeader />
   <RouterView />
 </template>

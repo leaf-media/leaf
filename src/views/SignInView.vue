@@ -18,7 +18,8 @@ const router = useRouter();
 
 watch(user, (newUser) => {
   if (newUser) {
-    router.push({ name: "home" });
+    console.log(newUser)
+    // router.push({ name: "home" });
   }
 });
 </script>
