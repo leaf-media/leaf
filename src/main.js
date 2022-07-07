@@ -24,18 +24,31 @@ const firebaseApp = initializeApp(firebaseConfig);
 getAuth(firebaseApp);
 getFirestore(firebaseApp);
 
-
 // =================== Initialize Fontawesome  ==========================
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-import { faEllipsisVertical, faUserXmark, faUserPlus, faXmark, faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import {
+  faEllipsisVertical,
+  faUserXmark,
+  faUserPlus,
+  faXmark,
+  faCaretUp,
+  faCaretDown,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faEllipsisVertical, faUserXmark, faUserPlus, faXmark, faCaretUp, faCaretDown)
+library.add(
+  faEllipsisVertical,
+  faUserXmark,
+  faUserPlus,
+  faXmark,
+  faCaretUp,
+  faCaretDown
+);
 
 // ===================   Initialize Vue    ==========================
 
 const app = createApp(App);
-app.component('font-awesome-icon', FontAwesomeIcon)
+app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(router);
 app.mount("#app");
