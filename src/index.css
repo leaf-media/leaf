@@ -3,3 +3,19 @@
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
+
+
+body {
+	@apply bg-lime-50 max-w-[48rem] mx-auto;
+}
+
+@layer utilities {
+	.button {
+		@apply filter hover:brightness-110 active:brightness-90 disabled:brightness-50;
+	}
+
+	.shadow-none {
+		shadow: none;
+	}
+}
+

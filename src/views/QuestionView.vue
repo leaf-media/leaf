@@ -12,7 +12,6 @@
 	watch(() => route.params.id, (id) => questionID.value = id, { immediate: true })
 
 
-	const isLoading = ref(false)
 	const headerData = reactive({
 		branches: [],
 		question: '',
@@ -23,7 +22,6 @@
 	async function loadData() {
 		await new Promise(resolve => setTimeout(resolve, 2000))
 
-		headerData.branches = ['tech', 'science']
 		headerData.question = 'jij?'
 		headerData.author = 'e'
 
@@ -37,8 +35,6 @@
 				isDownvoted: ref(false)
 			}
 		]
-
-		isLoading.value = false
 	}
 	loadData()
 
@@ -82,42 +78,45 @@
 </script>
 
 <template>
-	<main v-if="!isLoading">
+	<main class="mx-2 mt-12" v-if="answers">
 		<header>
-			<ul>
-				<li v-for="branch in headerData.branches" :key="branch">
-					{{ branch }}
-				</li>
-			</ul>
-			<h1>{{ headerData.question }}</h1>
-			<small>by {{ headerData.author }}</small>
+			<h2 class="font-bold text-xl">{{ headerData.question }}</h2>
+			<small class="text-xs">by <span class="underline">{{ headerData.author }}</span></small>
 		</header>
 
-		<main>
-			<form @submit.prevent="onSubmit" v-if="user">
-				<textarea v-model="newAnswer" :disabled="isLoading" />
-				<button type="submit">Submit</button>
-			</form>
-			<div v-else>
-				<p><router-link :to="{name: 'signin'}">Sign In</router-link> to answer.</p>
+		<main class="mt-24">
+			<div class="mb-4">
+				<form @submit.prevent="onSubmit" v-if="user">
+					<textarea v-model="newAnswer" :disabled="isLoading" />
+					<button type="submit">Submit</button>
+				</form>
+					<p v-else><router-link class="text-lime-500 hover:underline" :to="{name: 'signin'}">Sign In</router-link> to answer.</p>
 			</div>
 
-			<article v-for="answer in answers">
-				<header>
-					<h2>{{ answer.author }}</h2>
-				</header>
-				<main>
+			<article 
+			class="flex"
+			v-for="answer in answers">
+				<main class="order-2 border-l-2 border-lime-500 pl-2">
+					<h3 class="text-lime-500">{{ answer.author }}</h3>
 					<p>{{ answer.answer }}</p>
 				</main>
-				<aside>
-					<button @click="toggleUpvote(answer)">upvote</button>
+				<aside class="w-12 flex flex-col items-center">
+					<button title="Upvote" @click="toggleUpvote(answer)">
+            			<font-awesome-icon icon="fa-solid fa-caret-up" 
+            			:class="`${answer.isUpvoted ? 'text-lime-500' : 'text-black'}`" size="xl" />
+					</button>
+
 					<p>{{ answer.upvotes - answer.downvotes }}</p>
-					<button @click="toggleDownvote(answer)">downvote</button>
+
+					<button title="Downvote" @click="toggleDownvote(answer)">
+            			<font-awesome-icon icon="fa-solid fa-caret-down" 
+            			:class="`${answer.isDownvoted ? 'text-lime-500' : 'text-black'}`" size="xl" />
+					</button>
 				</aside>
 			</article>
 		</main>
 	</main>
-	<main v-else>
+	<main v-else class="mx-2 mt-12">
 		<p>Loading...</p>
 	</main>
 </template>

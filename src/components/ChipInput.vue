@@ -85,14 +85,14 @@ defineExpose({
 
 <template>
   <form
-    class="bg-stone-800 px-2 py-2 rounded overflow-hidden transition-[outline] duration-200 ease-in-out"
+    class="bg-lime-500 px-2 py-2 rounded overflow-hidden transition-[outline] duration-200 ease-in-out"
     :class="{ warning: isWarning }"
     @submit.prevent
   >
     <label
       for="chips-input"
       v-if="props.label.length"
-      class="text-stone-50 text-sm ml-2 mb-2 block"
+      class="text-stone-50 font-bold text-sm ml-2 mb-2 block"
     >
       {{ props.label }}
     </label>

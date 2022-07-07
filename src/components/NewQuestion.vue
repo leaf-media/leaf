@@ -1,31 +1,16 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { onClickOutside } from "@vueuse/core";
-import Chippy from "@/components/ChipInput.vue";
 
 const question = ref("");
 
-const topics = ref(null);
-
-onMounted(() => {
-  focusInput();
-});
-
-const focusInput = () => topics.value.focus();
-const clearChips = () => topics.value.clearChips();
-
-function clearAll() {
-  clearChips();
-  focusInput();
-}
-
-function onDeleteChip() {
-  focusInput();
-}
-
 function onSubmit() {
   close();
+  // TODO: redirect to question page
 }
+
+const input = ref(null)
+onMounted(() => input.value.focus())
 
 const container = ref(null);
 onClickOutside(container, close);
@@ -37,32 +22,13 @@ function close() {
 </script>
 
 <template>
-  <dialog open ref="container">
+  <dialog open ref="container" class="
+  fixed top-12 bg-lime-500 shadow rounded">
     <form @submit.prevent="onSubmit">
-      <label for="question">Add a question:</label>
-      <input id="question" v-model="question" />
+      <label for="question" class="font-bold text-white">Add a question:</label>
+      <input id="question" v-model="question" class="bg-transparent placeholder:text-white text-white border-white shadow-white! block border-[1px] mt-1 rounded border-black px-1 py-2" placeholder="Question" ref="input" />
 
-      <div>
-        <Chippy
-          ref="topics"
-          @delete:chip="onDeleteChip"
-          :autocomplete="['html', 'science']"
-          label="Topics:"
-          placeholder="Technology"
-        />
-
-        <div class="mt-1 space-x-1">
-          <button
-            class="underline text-stone-50 text-sm"
-            title="Clear all"
-            @click="clearAll"
-          >
-            clear
-          </button>
-        </div>
-      </div>
-
-      <button type="submit">Create</button>
+      <button type="submit" class="mt-8 button block w-full bg-white font-bold text-lime-500 rounded py-1">Create</button>
     </form>
   </dialog>
 </template>

@@ -4,7 +4,9 @@ defineProps(["question", "answers-count"]);
 
 <template>
   <article>
-    <p>{{ question }}</p>
-    <small>{{ answersCount }} answer{{ answersCount === 1 ? "" : "s" }}</small>
+      <main class="p-2 border-2 border-lime-500 rounded">
+          <p>{{ question }}</p>
+          <small class="text-sm text-lime-500">{{ answersCount }} answer{{ answersCount === 1 ? "" : "s" }}</small>
+      </main>
   </article>
 </template>

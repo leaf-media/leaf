@@ -217,7 +217,7 @@ defineExpose({
 <template>
   <div class="relative overflow-hidden w-full h-full">
     <input
-      class="bg-transparent w-full h-full text-stone-50 px-2 py-1 focus:outline-0 focus:filter focus:brightness-110"
+      class="bg-transparent placeholder:text-white w-full h-full text-stone-50 px-2 py-1 focus:outline-0 focus:filter focus:brightness-110"
       ref="input"
       :id="props.id"
       @keyup="onKeyup"
@@ -229,13 +229,6 @@ defineExpose({
       :list="smAndLarger && 'autocomplete-list'"
       :value="props.modelValue"
     />
-    <div
-      class="absolute top-[2px] left-2 filter brightness-50 pointer-events-none"
-      :style="{ color: props.color }"
-    >
-      <span class="opacity-0">{{ state.userInput }}</span>
-      <span>{{ state.toAutocomplete }}</span>
-    </div>
 
     <!-- Datalist is hidden on mobile (smAndLarger) -->
     <datalist id="autocomplete-list">
