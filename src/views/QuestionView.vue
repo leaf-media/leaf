@@ -64,9 +64,10 @@
 	async function onSubmit() {
 		answers.value.unshift({
 			answer: newAnswer.value,
-			author: user.value.displayName,
-			rating: 1,
-			isUpvoted: ref(true),
+			author: user.value.email,
+			upvotes: ref(5),
+			downvotes: ref(1),
+			isUpvoted: ref(false),
 			isDownvoted: ref(false)
 		})
 
@@ -87,14 +88,14 @@
 		<main class="mt-24">
 			<div class="mb-4">
 				<form @submit.prevent="onSubmit" v-if="user">
-					<textarea v-model="newAnswer" :disabled="isLoading" />
-					<button type="submit">Submit</button>
+					<textarea v-model="newAnswer" class="border-2 border-lime-500 w-full bg-transparent rounded resize-none" placeholder="Add answer..." ></textarea>
+					<button type="submit" class="bg-lime-500 font-bold text-white block py-1 w-full rounded">Submit</button>
 				</form>
 					<p v-else><router-link class="text-lime-500 hover:underline" :to="{name: 'signin'}">Sign In</router-link> to answer.</p>
 			</div>
 
 			<article 
-			class="flex"
+			class="flex my-8"
 			v-for="answer in answers">
 				<main class="order-2 border-l-2 border-lime-500 pl-2">
 					<h3 class="text-lime-500">{{ answer.author }}</h3>
