@@ -35,7 +35,7 @@ watch(user, (newUser) => {
       <button type="submit">Sign In</button>
     </form>
     <p>
-      New to leaf? <router-link to="/signup">Sign Up</router-link>
+      New to leaf? <router-link :to="{name: 'signup'}">Sign Up</router-link>
     </p>
   </main>
 </template>
