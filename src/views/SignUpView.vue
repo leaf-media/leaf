@@ -35,7 +35,8 @@ watch(user, (newUser) => {
       <button type="submit">Sign Up</button>
     </form>
     <p>
-      Already a leaf member? <router-link :to="{name: 'signin'}">Sign In</router-link>
+      Already a leaf member?
+      <router-link :to="{ name: 'signin' }">Sign In</router-link>
     </p>
   </main>
 </template>
