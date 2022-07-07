@@ -1,11 +1,10 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
 
-import App from './App.vue'
-import router from './router'
+import App from "./App.vue";
+import router from "./router";
 
-import './index.css'
-
+import "./index.css";
 
 // =================== Initialize firebase ==========================
 
@@ -19,18 +18,18 @@ const firebaseConfig = {
   projectId: "leaf-mediagroup",
   storageBucket: "leaf-mediagroup.appspot.com",
   messagingSenderId: "547575279711",
-  appId: "1:547575279711:web:e809d70e0a6520e8a4ebea"
+  appId: "1:547575279711:web:e809d70e0a6520e8a4ebea",
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
-const db = getFirestore(firebaseApp);
+getAuth(firebaseApp);
+getFirestore(firebaseApp);
 
 // ===================   Initialize Vue    ==========================
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(router)
+app.use(createPinia());
+app.use(router);
 
-app.mount('#app')
+app.mount("#app");
