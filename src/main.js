@@ -22,9 +22,9 @@ const firebaseConfig = {
   appId: "1:547575279711:web:e809d70e0a6520e8a4ebea"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
 
 // ===================   Initialize Vue    ==========================
 
